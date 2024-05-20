@@ -20,7 +20,7 @@ export default function Docs({params} : ProductDetailsProps
     }
     return (
         <Fragment>
-            <h1>Docs Page</h1>
+            <h1>Docs Home Page</h1>
         </Fragment>
     )
 }
