@@ -1,7 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 import DeleteButton from "./DeleteButton";
-// import { useState } from "react";
-// import { initialData } from "../data/mockData";
+
 import { useTodosContext } from "../contexts/useTodosContext";
 
 const TodoLists = () => {
@@ -17,7 +16,7 @@ const TodoLists = () => {
     <Fragment>
         <ul>
             {todos.length === 0 ? (
-              <li className="flex h-full justify-center items-center font-semibold text-[#231d15] text-lg">Add A Todo</li>
+              <li className="flex h-full justify-center items-center font-semibold text-[#231d15] text-lg">Start by adding a Todo</li>
             ):(null)}
 
             {todos.map((todo, index)=>

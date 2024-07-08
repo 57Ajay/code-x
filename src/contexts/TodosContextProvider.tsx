@@ -19,25 +19,25 @@ export const TodosContext = createContext<TodosContextType>({
 });
 
 const TodosContextProvider = ({ children }: { children: React.ReactNode }) => {
-  // const savedTodos = localStorage.getItem("todos");
+  const savedTodos = localStorage.getItem("todos");
   const [todos, setTodos] = useState<Todo[]>([]);
-  // useEffect(() => {
-  //   try{
-  //     if (savedTodos) {
-  //       setTodos(JSON.parse(savedTodos));
-  //     } else {
-  //         const fetchTodos = async()=>{
-  //         const data = await fetch("https://bytegrad.com/course-assets/api/todos");
-  //         const todos = await data.json();
-  //         setTodos(todos);
-  //         localStorage.setItem("todos", JSON.stringify(todos));
-  //       };
-  //       fetchTodos()
-  //     }
-  //   }catch(error){
-  //     console.log(error);
-  //   }
-  // }, []);
+  useEffect(() => {
+    try{
+      if (savedTodos) {
+        setTodos(JSON.parse(savedTodos));
+      } else {
+          const fetchTodos = async()=>{
+          const data = await fetch("https://bytegrad.com/course-assets/api/todos");
+          const todos = await data.json();
+          setTodos(todos);
+          localStorage.setItem("todos", JSON.stringify(todos));
+        };
+        fetchTodos()
+      }
+    }catch(error){
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));

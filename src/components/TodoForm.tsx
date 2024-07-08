@@ -2,13 +2,20 @@ import { Fragment } from "react/jsx-runtime";
 import Button from "./Button";
 import { useState } from "react";
 import { useTodosContext } from "../contexts/useTodosContext";
-
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 const TodoForm = () => {
+  const { isAuthenticated } = useKindeAuth();
+  
   const [todoText, setTodoText] = useState("");
   const { todos, setTodos } = useTodosContext();
 
   const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(!isAuthenticated){
+      return(
+        alert("You must be logged in to add a todo")
+      );
+    }
           // check for duplicate todo
     if(todos.some(todo => todo.text.toLocaleLowerCase() === todoText.toLocaleLowerCase())){
       alert("Todo already exists");

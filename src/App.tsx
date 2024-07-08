@@ -6,6 +6,7 @@ import CenterContainer from "./components/CenterContainer";
 import Sidebar from "./components/Sidebar";
 import TodoLists from "./components/TodoLists";
 import TodosContextProvider from "./contexts/TodosContextProvider";
+
 const App = () => {
   return (
     <Container>
