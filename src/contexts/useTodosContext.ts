@@ -6,4 +6,4 @@ export const useTodosContext = (): TodosContextType => {
       throw new Error('useTodosContext must be used within a TodosContextProvider');
     }
     return context;
-  };
+};

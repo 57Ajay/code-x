@@ -1,15 +1,40 @@
 import { Fragment } from "react/jsx-runtime";
 import Button from "./Button";
 import { useState } from "react";
+import { useTodosContext } from "../contexts/useTodosContext";
 
 const TodoForm = () => {
   const [todoText, setTodoText] = useState("");
+  const { todos, setTodos } = useTodosContext();
+
+  const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+          // check for duplicate todo
+    if(todos.some(todo => todo.text.toLocaleLowerCase() === todoText.toLocaleLowerCase())){
+      alert("Todo already exists");
+      setTodoText("");
+      return;
+    }
+          // check for empty todo
+    if(todoText.trim() === ""){
+      return;
+    }
+    setTodos([
+      ...todos,
+      {
+        text: todoText,
+        isCompleted: false,
+        id: Math.random()+todos.length,
+      },
+      ]);
+      setTodoText("");
+  };
 
   return (
     <Fragment>
 
       <form 
-        onSubmit={e => e.preventDefault()}
+        onSubmit={formSubmitHandler}
         
         >
 
@@ -24,7 +49,7 @@ const TodoForm = () => {
           onChange={e => setTodoText(e.target.value)}
         />
 
-        <Button text="Add Todo" type="submit" buttonType="Primary" onClick={()=>void 0} />
+        <Button text="Add Todo" type="submit" buttonType="Primary" />
             
       </form>
 

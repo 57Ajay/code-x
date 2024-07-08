@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 
 
-const Button = ({text, type, buttonType, onClick}: {text: string, type: "submit" | "reset" | "button" | undefined, buttonType: 'Secondary' | 'Primary' | undefined, onClick: () => void}) => {
+const Button = ({text, type, buttonType, onClick}: {text: string, type: "submit" | "reset" | "button" | undefined, buttonType: 'Secondary' | 'Primary' | undefined, onClick?: () => void}) => {
 
   return (
     <Fragment>
